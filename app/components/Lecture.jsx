@@ -1,6 +1,8 @@
 var React = require('react');
+var {connect} = require('react-redux');
+var actions = require('actions');
 
-var Lecture = React.createClass({
+export var Lecture = React.createClass({
   render: function() {
     var {id, name, professor, time, location} = this.props;
     return (
@@ -11,4 +13,4 @@ var Lecture = React.createClass({
   }
 });
 
-module.exports = Lecture;
+export default connect()(Lecture);

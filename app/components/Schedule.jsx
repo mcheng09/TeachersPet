@@ -1,9 +1,10 @@
 var React = require('react');
-var AddLecture = require('AddLecture');
-var LectureList = require('LectureList');
-var LectureSearch = require('LectureSearch');
 var uuid = require('node-uuid');
-var LectureAPI = require('LectureAPI');
+
+import AddLecture from 'AddLecture';
+import LectureList from 'LectureList';
+import LectureSearch from 'LectureSearch';
+import LectureAPI from 'LectureAPI';
 
 var Schedule = React.createClass({
   getInitialState: function() {
@@ -41,7 +42,7 @@ var Schedule = React.createClass({
       <div className="text-center col-xs-8 col-xs-offset-2">
         <h3>Schedule Component</h3>
         <LectureSearch onSearch={this.handleSearchLecture}/>
-        <LectureList lectures={filteredLectures}/>
+        <LectureList/>
         <AddLecture handleAddLecture={this.handleAddLecture}/>
       </div>
     );

@@ -1,7 +1,8 @@
 var React = require('react');
-var Lecture = require('Lecture');
+var {connect} = require('react-redux');
+import Lecture from 'Lecture';
 
-var LectureList = React.createClass({
+export var LectureList = React.createClass({
   render: function() {
     var {lectures} = this.props;
     var renderLectures = () => {
@@ -24,4 +25,10 @@ var LectureList = React.createClass({
   }
 });
 
-module.exports = LectureList;
+export default connect(
+  (state) => {
+    return {
+      lectures: state.lectures
+    }
+  }
+)(LectureList);

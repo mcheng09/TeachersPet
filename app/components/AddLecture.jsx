@@ -1,9 +1,12 @@
 var React = require('react');
+var {connect} = require('react-redux');
+var actions = require('actions');
 
-var AddLecture = React.createClass({
+export var AddLecture = React.createClass({
   handleAddLecture: function(e) {
     e.preventDefault();
 
+    var {dispatch} = this.props;
     var lectureName = this.refs.lectureName.value;
     var lectureProfessor = this.refs.lectureProfessor.value;
     var lectureTime = this.refs.lectureTime.value;
@@ -14,7 +17,7 @@ var AddLecture = React.createClass({
       this.refs.lectureProfessor.value = '';
       this.refs.lectureTime.value = '';
       this.refs.lectureLocation.value = '';
-      this.props.handleAddLecture(lectureName, lectureProfessor, lectureTime, lectureLocation);
+      dispatch(actions.addLecture(lectureName, lectureProfessor, lectureTime, lectureLocation));
     }
     else {
       this.refs.lectureName.focus();
@@ -36,4 +39,4 @@ var AddLecture = React.createClass({
   }
 })
 
-module.exports = AddLecture;
+export default connect()(AddLecture);
