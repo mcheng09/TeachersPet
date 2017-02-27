@@ -5,7 +5,7 @@ var Lecture = React.createClass({
     var {id, name, professor, time, location} = this.props;
     return (
       <div>
-        {id}.{name}.{professor}. {time}. {location}
+        {name}.{professor}. {time}. {location}
       </div>
     )
   }

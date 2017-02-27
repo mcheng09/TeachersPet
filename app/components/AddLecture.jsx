@@ -3,14 +3,21 @@ var React = require('react');
 var AddLecture = React.createClass({
   handleAddLecture: function(e) {
     e.preventDefault();
-    var lectures = this.refs.lectures.value;
 
-    if (lectures.length > 0) {
-      this.refs.lectures.value = '';
-      this.props.handleAddLecture(lectures);
+    var lectureName = this.refs.lectureName.value;
+    var lectureProfessor = this.refs.lectureProfessor.value;
+    var lectureTime = this.refs.lectureTime.value;
+    var lectureLocation = this.refs.lectureLocation.value;
+
+    if (lectureName.length > 0) {
+      this.refs.lectureName.value = '';
+      this.refs.lectureProfessor.value = '';
+      this.refs.lectureTime.value = '';
+      this.refs.lectureLocation.value = '';
+      this.props.handleAddLecture(lectureName, lectureProfessor, lectureTime, lectureLocation);
     }
     else {
-      this.refs.lectures.focus();
+      this.refs.lectureName.focus();
     }
   },
   render: function() {
@@ -18,7 +25,10 @@ var AddLecture = React.createClass({
       <div>
         <h5>Add Lecture Here</h5>
         <form ref="form" onSubmit={this.handleAddLecture}>
-          <input type="text" ref="lectures" placeholder="Add Lecture Here"/>
+          <input type="text" ref="lectureName" placeholder="Add Lecture Name"/>
+          <input type="text" ref="lectureProfessor" placeholder="Add Lecture Professor Name"/>
+          <input type="text" ref="lectureTime" placeholder="Add Lecture Time"/>
+          <input type="text" ref="lectureLocation" placeholder="Add Lecture Location"/>
           <button>Add Lecture</button>
         </form>
       </div>

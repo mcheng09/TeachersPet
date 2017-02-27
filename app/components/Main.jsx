@@ -7,7 +7,6 @@ var Main = React.createClass({
     return (
       <div>
         <Nav />
-        <h1>Main Component</h1>
         <Schedule />
       </div>
     )
