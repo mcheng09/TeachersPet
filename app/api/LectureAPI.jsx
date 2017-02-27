@@ -15,9 +15,19 @@ module.exports = {
       lectures = JSON.parse(stringLectures);
     }
     catch(e) {
-
+      console.log(e);
     }
 
     return $.isArray(lectures) ? lectures : [];
+  },
+  filterLectures: function(lectures, searchLecture) {
+    var filteredLectures = lectures;
+
+    filteredLectures = filteredLectures.filter((lecture) => {
+      var lecture = lecture.name.toLowerCase();
+      return searchLecture.length === 0 || lecture.indexOf(searchLecture) > -1;
+    });
+
+    return filteredLectures;
   }
 };

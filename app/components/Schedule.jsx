@@ -35,12 +35,13 @@ var Schedule = React.createClass({
     })
   },
   render: function() {
-    var {lectures} = this.state;
+    var {lectures, searchLecture} = this.state;
+    var filteredLectures = LectureAPI.filterLectures(lectures, searchLecture);
     return (
       <div className="text-center col-xs-8 col-xs-offset-2">
         <h3>Schedule Component</h3>
         <LectureSearch onSearch={this.handleSearchLecture}/>
-        <LectureList lectures={lectures}/>
+        <LectureList lectures={filteredLectures}/>
         <AddLecture handleAddLecture={this.handleAddLecture}/>
       </div>
     );
