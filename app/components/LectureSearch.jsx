@@ -1,20 +1,27 @@
 var React = require('react');
+var {connect} = require('react-redux');
+var actions = require('actions');
 
-var LectureSearch = React.createClass({
-  handleSearchLecture: function() {
-    var searchLecture = this.refs.searchLecture.value;
-
-    this.props.onSearch(searchLecture);
-  },
+export var LectureSearch = React.createClass({
   render: function() {
+    var {dispatch, searchLecture} = this.props;
     return (
       <div>
         <div>
-          <input type="search" ref="searchLecture" placeholder="Search Lecture" onChange={this.handleSearchLecture}/>
+          <input type="search" ref="searchLecture" placeholder="Search Lecture" value={searchLecture} onChange={() => {
+              var searchLecture = this.refs.searchLecture.value;
+              dispatch(actions.setSearchLecture(searchLecture));
+            }}/>
         </div>
       </div>
     )
   }
 });
 
-module.exports = LectureSearch;
+export default connect (
+  (state) => {
+    return {
+      searchLecture: state.searchLecture
+    }
+  }
+)(LectureSearch);

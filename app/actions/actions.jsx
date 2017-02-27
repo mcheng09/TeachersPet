@@ -5,12 +5,6 @@ export var setSearchLecture = (searchLecture) => {
   };
 };
 
-export var showLectures = () => {
-  return {
-    type: 'SHOW_LECTURES'
-  };
-};
-
 export var addLecture = (name, professor, time, location) => {
   return {
     type: 'ADD_LECTURE',
