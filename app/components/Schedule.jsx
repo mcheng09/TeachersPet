@@ -3,35 +3,17 @@ var AddLecture = require('AddLecture');
 var LectureList = require('LectureList');
 var LectureSearch = require('LectureSearch');
 var uuid = require('node-uuid');
+var LectureAPI = require('LectureAPI');
 
 var Schedule = React.createClass({
   getInitialState: function() {
     return {
       searchLecture: '',
-      lectures: [
-        {
-          id: uuid(),
-          name: "English",
-          professor: "Chang",
-          time: "Monday",
-          location: "ESL101"
-        },
-        {
-          id: uuid(),
-          name: "Math",
-          professor: "Cheng",
-          time: "Wednesday",
-          location: "CS49"
-        },
-        {
-          id: uuid(),
-          name: "Chemistry",
-          professor: "Gomez",
-          time: "Friday",
-          location: "BB11"
-        }
-      ]
-    }
+      lectures: LectureAPI.getLectures()
+    };
+  },
+  componentDidUpdate: function() {
+    LectureAPI.setLectures(this.state.lectures);
   },
   handleAddLecture: function(name, professor, time, location) {
     this.setState({
