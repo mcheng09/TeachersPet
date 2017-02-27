@@ -14,3 +14,10 @@ export var addLecture = (name, professor, time, location) => {
     location: location
   };
 };
+
+export var addLectures = (lectures) => {
+  return {
+    type: 'ADD_LECTURES',
+    lectures: lectures
+  }
+};

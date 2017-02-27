@@ -22,6 +22,11 @@ export var lectureReducer = (state=[], action) => {
           location: action.location
         }
       ];
+    case 'ADD_LECTURES':
+      return [
+        ...state,
+        ...action.lectures
+      ];
     default:
       return state;
   }
