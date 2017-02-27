@@ -1,5 +1,6 @@
 var React = require('react');
 var Nav = require('Nav');
+var Schedule = require('Schedule');
 
 var Main = React.createClass({
   render: function() {
@@ -7,6 +8,7 @@ var Main = React.createClass({
       <div>
         <Nav />
         <h1>Main Component</h1>
+        <Schedule />
       </div>
     )
   }
