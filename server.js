@@ -1,6 +1,8 @@
 var express = require('express');
-
 var app = express();
+var path = require('path');
+var db = require('./models/database');
+var config = require('./knexfile.js')
 
 app.use(function (req, res, next){
   if (req.headers['x-forwarded-proto'] === 'https') {

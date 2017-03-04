@@ -16,8 +16,8 @@ var store = require('configureStore').configure();
 //   LectureAPI.setLectures(state.lectures);
 // });
 //
-// var initialLectures = LectureAPI.getLectures();
-// store.dispatch(actions.addLectures(initialLectures));
+var initialLectures = LectureAPI.getLectures();
+store.dispatch(actions.addLectures(initialLectures));
 
 ReactDOM.render(
   <Provider store={store}>

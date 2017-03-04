@@ -1,13 +1,7 @@
-var pg = requiest('pg');
-var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/teacherspet';
+var config = require('../knexfile.js');
+var env = 'development';
+var knex = require('knex')(config[env]);
 
-var client = new pg.Client(connectionString);
-client.connect();
+module.exports = knex;
 
-var query = client.query(
-  'CREATE TABLE items(id SERIAL PRIMARY KEY, text VARCHAR(40) not null, complete BOOLEAN)'
-);
-
-query.on('end', () => {
-  client.end();
-});
+knex.migrate.latest([config]);
