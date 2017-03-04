@@ -1,7 +1,5 @@
 var express = require('express');
 
-var mysql = require('./db/mysql');
-
 var app = express();
 
 app.use(function (req, res, next){

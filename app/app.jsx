@@ -9,15 +9,15 @@ var LectureAPI = require('LectureAPI');
 var actions = require('actions');
 var store = require('configureStore').configure();
 
-store.subscribe(() => {
-  var state = store.getState();
-  console.log('New State', state);
-
-  LectureAPI.setLectures(state.lectures);
-});
-
-var initialLectures = LectureAPI.getLectures();
-store.dispatch(actions.addLectures(initialLectures));
+// store.subscribe(() => {
+//   var state = store.getState();
+//   console.log('New State', state);
+//
+//   LectureAPI.setLectures(state.lectures);
+// });
+//
+// var initialLectures = LectureAPI.getLectures();
+// store.dispatch(actions.addLectures(initialLectures));
 
 ReactDOM.render(
   <Provider store={store}>
