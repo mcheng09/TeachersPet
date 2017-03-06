@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var path = require('path');
-var db = require('./models/database');
+var knex = require('./models/database');
 var config = require('./knexfile.js')
 
 app.use(function (req, res, next){
@@ -12,6 +12,11 @@ app.use(function (req, res, next){
     next();
   }
 });
+
+// Routes
+
+var apiLectureRoutes = require('./routes/api_lectures');
+app.use('/', apiLectureRoutes);
 
 app.use(express.static('public'));
 

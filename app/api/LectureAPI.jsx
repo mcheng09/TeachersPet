@@ -12,10 +12,8 @@ module.exports = {
     // var stringLectures = localStorage.getItem('lectures');
 
     var stringLectures = pg('lectures')
-      .select('lecture_name')
-      .then(function(data){
-        return JSON.stringify(data);
-      });
+      .select('lecture_name');
+
 
     console.log(stringLectures);
 
