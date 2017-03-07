@@ -12,23 +12,23 @@ module.exports = {
   getLectures: function() {
     var stringLectures = localStorage.getItem('lectures');
 
-    axios.get('/api/lectures')
-      .then(function(res){
-        console.log(res.data.data);
-      })
+    return axios.get('/api/lectures')
+        .then(function(res){
+          return res.data.data
+        });
 
-    var lectures = [];
-
-    try {
-      lectures = JSON.parse(stringLectures);
-    }
-    catch(e) {
-      console.log(e);
-    }
-
-    console.log(lectures);
-
-    return $.isArray(lectures) ? lectures : [];
+    //var lectures = [];
+    //
+    //try {
+    //  lectures = JSON.parse(stringLectures);
+    //}
+    //catch(e) {
+    //  console.log(e);
+    //}
+    //
+    //console.log(lectures);
+    //
+    //return $.isArray(lectures) ? lectures : [];
   },
   filterLectures: function(lectures, searchLecture) {
     var filteredLectures = lectures;
