@@ -4,10 +4,10 @@ var router = new express.Router();
 
 router.get('/api/lectures', function(req, res) {
   knex('lectures')
-    .select('*')
+    .select()
     .then(function(data) {
       res.json({
-        data: data
+        data:data
       })
     })
 })

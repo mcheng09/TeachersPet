@@ -4,6 +4,7 @@ var {Provider} = require('react-redux');
 var {Route, Router, IndexRoute, hashHistory} = require('react-router');
 
 var Main = require('Main');
+var Schedule = require('Schedule');
 var LectureAPI = require('LectureAPI');
 
 var actions = require('actions');
@@ -21,7 +22,11 @@ store.dispatch(actions.addLectures(initialLectures));
 
 ReactDOM.render(
   <Provider store={store}>
-    <Main/>
+    <Router history={hashHistory}>
+      <Route path="/" component={Main}>
+        <IndexRoute component={Schedule}/>
+      </Route>
+    </Router>
   </Provider>,
   document.getElementById('app')
 );

@@ -1,21 +1,21 @@
 var $ = require('jQuery');
 var pg = require('knex');
+var axios = require('axios');
 
 module.exports = {
-  // setLectures: function(lectures) {
-  //   if ($.isArray(lectures)) {
-  //     localStorage.setItem('lectures', JSON.stringify(lectures));
-  //     return lectures;
-  //   }
-  // },
+  setLectures: function(lectures) {
+    if ($.isArray(lectures)) {
+      localStorage.setItem('lectures', JSON.stringify(lectures));
+      return lectures;
+    }
+  },
   getLectures: function() {
-    // var stringLectures = localStorage.getItem('lectures');
+    var stringLectures = localStorage.getItem('lectures');
 
-    var stringLectures = pg('lectures')
-      .select('lecture_name');
-
-
-    console.log(stringLectures);
+    axios.get('/api/lectures')
+      .then(function(res){
+        console.log(res.data.data);
+      })
 
     var lectures = [];
 
@@ -25,6 +25,8 @@ module.exports = {
     catch(e) {
       console.log(e);
     }
+
+    console.log(lectures);
 
     return $.isArray(lectures) ? lectures : [];
   },
