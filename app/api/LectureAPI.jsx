@@ -11,13 +11,15 @@ module.exports = {
   },
   getLectures: function() {
     var stringLectures = localStorage.getItem('lectures');
-
-    axios.get('/api/lectures')
-      .then(function(res){
-        console.log(res.data.data);
-      })
-
     var lectures = [];
+
+    console.log(stringLectures);
+
+    // axios.get('/api/lectures')
+    //   .then(function(res){
+    //     lectures = res.data.data;
+    //     console.log(lectures);
+    //   })
 
     try {
       lectures = JSON.parse(stringLectures);
@@ -25,8 +27,6 @@ module.exports = {
     catch(e) {
       console.log(e);
     }
-
-    console.log(lectures);
 
     return $.isArray(lectures) ? lectures : [];
   },
