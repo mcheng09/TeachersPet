@@ -16,10 +16,10 @@ export var lectureReducer = (state=[], action) => {
         ...state,
         {
           id: uuid(),
-          name: action.name,
-          professor: action.professor,
-          time: action.time,
-          location: action.location
+          lecture_name: action.name,
+          lecture_professor: action.professor,
+          lecture_time: action.time,
+          lecture_location: action.location
         }
       ];
     case 'ADD_LECTURES':

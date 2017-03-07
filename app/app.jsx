@@ -4,24 +4,33 @@ var {Provider} = require('react-redux');
 var {Route, Router, IndexRoute, hashHistory} = require('react-router');
 
 var Main = require('Main');
+var Schedule = require('Schedule');
 var LectureAPI = require('LectureAPI');
 
 var actions = require('actions');
 var store = require('configureStore').configure();
 
-store.subscribe(() => {
-  var state = store.getState();
-  console.log('New State', state);
-
-  LectureAPI.setLectures(state.lectures);
+// store.subscribe(() => {
+//   var state = store.getState();
+//   console.log('New State', state);
+//
+//   LectureAPI.setLectures(state.lectures);
+// });
+//
+var initialLectures = LectureAPI.getLectures();
+initialLectures.then(function(lectures){
+  store.dispatch(actions.addLectures(lectures));
 });
 
-var initialLectures = LectureAPI.getLectures();
-store.dispatch(actions.addLectures(initialLectures));
+// store.dispatch(actions.addLectures(initialLectures));
 
 ReactDOM.render(
   <Provider store={store}>
-    <Main/>
+    <Router history={hashHistory}>
+      <Route path="/" component={Main}>
+        <IndexRoute component={Schedule}/>
+      </Route>
+    </Router>
   </Provider>,
   document.getElementById('app')
 );

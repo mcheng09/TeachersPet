@@ -4,10 +4,10 @@ var actions = require('actions');
 
 export var Lecture = React.createClass({
   render: function() {
-    var {id, name, professor, time, location} = this.props;
+    var {id, lecture_name, lecture_professor, lecture_time, lecture_location} = this.props;
     return (
       <div>
-        {name}.{professor}. {time}. {location}
+        {lecture_name}.{lecture_professor}. {lecture_time}. {lecture_location}
       </div>
     )
   }
