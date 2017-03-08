@@ -7,7 +7,7 @@ export var Lecture = React.createClass({
     var {id, lecture_name, lecture_professor, lecture_time, lecture_location} = this.props;
     return (
       <div>
-        {lecture_name}.{lecture_professor}. {lecture_time}. {lecture_location}
+        {id}.{lecture_name}.{lecture_professor}. {lecture_time}. {lecture_location}
       </div>
     )
   }

@@ -3,6 +3,7 @@ var app = express();
 var path = require('path');
 var knex = require('./models/database');
 var config = require('./knexfile.js')
+var bodyParser = require('body-parser');
 
 app.use(function (req, res, next){
   if (req.headers['x-forwarded-proto'] === 'https') {
@@ -12,6 +13,9 @@ app.use(function (req, res, next){
     next();
   }
 });
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 
 // Routes
 

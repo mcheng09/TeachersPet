@@ -5,13 +5,13 @@ export var setSearchLecture = (searchLecture) => {
   };
 };
 
-export var addLecture = (name, professor, time, location) => {
+export var addLecture = (lecture_name, lecture_professor, lecture_time, lecture_location) => {
   return {
     type: 'ADD_LECTURE',
-    name: name,
-    professor: professor,
-    time: time,
-    location: location
+    lecture_name: lecture_name,
+    lecture_professor: lecture_professor,
+    lecture_time: lecture_time,
+    lecture_location: lecture_location
   };
 };
 
